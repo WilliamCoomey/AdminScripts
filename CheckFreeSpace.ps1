@@ -12,7 +12,6 @@ function Print-Disks
         $wmiObj = Get-WmiObject win32_logicaldisk -ComputerName $computer
         $name = $wmiObj.SystemName[0]
 
-        echo ""
         echo "$name Disks"
         echo "---------------------------"
         echo "ID $Tab Free $Tab Size $Tab %"
@@ -51,6 +50,7 @@ function Print-Disks
     }
 }
 
-Print-Disks hostname1, hostname2
 
-pause
+$servers = Get-Content .\ServerList.txt
+Print-Disks $servers
+
