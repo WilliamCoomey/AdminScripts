@@ -173,7 +173,7 @@ function Send-Email
 
 # Servers listed in a text file in the same directory
 $servers = Get-Content .\ServerList.txt
-$disks = Get-Disks $server
+$disks = Get-Disks $servers
 $html = Get-Html $disks
 
 Send-Email $html
