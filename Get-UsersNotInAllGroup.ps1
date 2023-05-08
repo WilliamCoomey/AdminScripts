@@ -13,6 +13,7 @@ foreach($user in $users)
         if($member.EmailAddress -eq $user.UserPrincipalName)
         {
             $inGroup = $True
+            break
         }
     }
 
@@ -23,4 +24,4 @@ foreach($user in $users)
     }
 }
 
-$usersNotInGroup | Export-Csv C:\Temp\UsersNotInAll.csv
+$usersNotInGroup | Select-Object -Property DisplayName, UserPrincipalName | Export-Csv -NoTypeInformation UsersNotInAll.csv
